@@ -20,12 +20,10 @@ public class App
 	public static void main( String[] args ) throws UnknownHostException
 	{
 		//Création de morphia et d'un objet qui représente MongoDB
-		Morphia morphia = new Morphia();    
-	    //Mongo mongo = new Mongo();
-	    
+		Morphia morphia = new Morphia();
 	    
 	    morphia.map(Person.class).map(Adresse.class);
-	    Datastore ds = morphia.createDatastore(new MongoClient(), "my_database");
+	    Datastore ds = morphia.createDatastore(new MongoClient(), "my_database"); //on indique à quelle database se rattacher
 	    
 	    //Create person
 	    Person p1 = new Person();
@@ -126,8 +124,9 @@ public class App
 	    ds.save(ar2);
 	    ds.save(ar3);
 	    
-	    //exemple suppression
+	    //Exemple suppression
 	    ds.delete(ar1);
+	    
 	    //Affichage
 	    for(Person e : ds.find(Person.class)){
 	    	System.out.println(e.getName());
@@ -139,8 +138,6 @@ public class App
 	    
 	    for(Adresse e : ds.find(Adresse.class)){
 	        System.out.println(e.getStreet()+" "+e.getCity());
-		}
-
-	    
+		}   
 	}
 }

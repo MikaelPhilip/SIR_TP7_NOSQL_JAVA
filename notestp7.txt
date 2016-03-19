@@ -1,0 +1,50 @@
+========================Instalation MongoDB==========================
+
+1) On dézippe le dossier mongoDB et ouvre un terminal dedans
+
+2)On crée les dossiers de données: data/db
+
+3)Lancer mongodb server: bin\mongod.exe --dbpath data\dbpath
+/!\ mongo.exe => client pas server !
+
+4)lancer le client dans une autre fenetre bin\mongo.exe
+On peux ici faire des ajouts/suppression : db.test.save({a:1}) / db.test.find()
+
+
+=========================Utilisation d'un JPA pour mongoDB avec java : morphia=========================
+
+1) Faire un project maven et importer certaine dépendances:
+
+<dependency>
+        <groupId>com.google.code.morphia</groupId>
+        <artifactId>morphia</artifactId>
+        <version>0.102</version>
+	</dependency>
+	<dependency>
+        <groupId>cglib</groupId>
+        <artifactId>cglib-nodep</artifactId>
+        <version>[2.1_3,)</version>
+        <type>jar</type>
+        <optional>true</optional>
+	</dependency>
+	<dependency>
+        <groupId>com.thoughtworks.proxytoys</groupId>
+        <artifactId>proxytoys</artifactId>
+        <version>1.0</version>
+        <type>jar</type>
+        <optional>true</optional>
+	</dependency>
+	<dependency>
+    	<groupId>org.mongodb</groupId>
+    	<artifactId>mongo-java-driver</artifactId>
+    	<version>2.11.3</version>
+	</dependency>
+	
+2) Créer des classes en utilisant les annotations morphia
+
+(voir code java)
+
+Lire sur mongodb: use nom_database (aller dans la database) puis show (affihcer les données) puis db.objet.find() (liste des objets) 
+Tous supprimer: db.dropDatabase()
+
+Morphia est trés proche du principe de JPA mais en version simplifié.
